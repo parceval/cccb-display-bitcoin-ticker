@@ -22,7 +22,7 @@ RATES = [ ('EUR', 'http://data.mtgox.com/api/2/BTCEUR/money/ticker'),
 XSIZE = 56
 YSIZE = 20
 SLEEP_TICKER = 0.15
-RATES_POLL_INTERVAL = 10.0
+RATES_POLL_INTERVAL = 30.0
 RATES_WINDOW_WIDTH = 25
 
 def show_text(x,y,text):
@@ -86,7 +86,7 @@ def fetch_trades(currency):
     trades = ""
 
     for trade in resp['data']:
-        trades+= " %s (%s %s)," % (trade['amount'], trade['price'], currency)
+        trades+= "  %.2f/%.2f" % (float(trade['amount']), float(trade['price']))
 
     return str(" lastest trades " + trades)
 
